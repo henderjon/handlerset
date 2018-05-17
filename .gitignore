@@ -1,0 +1,13 @@
+.DS_Store
+data.json
+vendor/*
+*.data
+*.php
+*.csv
+.vscode/*
+*.rdb
+*.out
+status.sh
+*.svg
+*.pprof
+*.out
