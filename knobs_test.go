@@ -48,7 +48,7 @@ func TestOrderHandlerCtxCancellation(t *testing.T) {
 			b.WriteString("b")
 		}),
 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			SetError(r, errors.New("Not Found"))
+			Cancel(r, errors.New("Not Found"))
 		}),
 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			b.WriteString("c")

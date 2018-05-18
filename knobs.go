@@ -20,8 +20,8 @@ func ctxGetError(ctx context.Context) (bool, error) {
 	return ok, b
 }
 
-// SetError places an Error in the requests Context
-func SetError(r *http.Request, e error) {
+// Cancel places an Error in the requests Context
+func Cancel(r *http.Request, e error) {
 	ctx := r.Context()
 	ctx = ctxSetError(ctx, e)
 	*r = *r.WithContext(ctx)
