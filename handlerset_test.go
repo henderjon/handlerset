@@ -34,7 +34,7 @@ func TestOrderHandlerOrder(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "abcd"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 }
 
@@ -61,7 +61,7 @@ func TestOrderHandlerCtxCancellation(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "ab"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 }
 
@@ -81,7 +81,7 @@ func TestOrderHandlerAppend(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "ab"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 
 	b.Truncate(0)
@@ -100,7 +100,7 @@ func TestOrderHandlerAppend(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "abcd"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 
 }
@@ -121,7 +121,7 @@ func TestOrderHandlerPrepend(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "ab"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 
 	b.Truncate(0)
@@ -140,7 +140,7 @@ func TestOrderHandlerPrepend(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "dcab"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 }
 
@@ -165,6 +165,6 @@ func TestOrderHandlerNotUsingNew(t *testing.T) {
 	set.ServeHTTP(w, req)
 
 	if diff := cmp.Diff(b.String(), "ab"); diff != "" {
-		t.Errorf("unexpected reseult: (-got +want)\n%s", diff)
+		t.Errorf("unexpected result: (-got +want)\n%s", diff)
 	}
 }
