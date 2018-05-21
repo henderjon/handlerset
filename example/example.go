@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"net/http"
+
+	"github.com/henderjon/handlerset"
 )
 
 func main() {
@@ -12,18 +14,18 @@ func main() {
 		bMux = http.NewServeMux() // paths to require an Authorization header
 	)
 
-	aMux.Handle("/foo", knobs.New(
+	aMux.Handle("/foo", handlerset.New(
 		first(),
 		second(),
 	))
 
-	aMux.Handle("/bar", knobs.New(
+	aMux.Handle("/bar", handlerset.New(
 		first(),
 		third(),
 		second(),
 	))
 
-	aMux.Handle("/", knobs.New(
+	aMux.Handle("/", handlerset.New(
 		first(),
 		second(),
 		third(),
@@ -60,6 +62,6 @@ func third() http.Handler {
 
 func fourth() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		knobs.Cancel(r, errors.New("all is NOT well"))
+		handlerset.Cancel(r, errors.New("all is NOT well"))
 	})
 }
