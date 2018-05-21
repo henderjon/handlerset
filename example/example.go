@@ -3,8 +3,6 @@ package main
 import (
 	"errors"
 	"net/http"
-
-	"github.com/henderjon/knobs"
 )
 
 func main() {
