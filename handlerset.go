@@ -5,18 +5,18 @@ import (
 	"net/http"
 )
 
-type ctxKnobErrorKey int
+type ctxErrorKey int
 
-var knobErrorKey ctxKnobErrorKey
+var errorKey ctxErrorKey
 
 // CtxSetError sets the error for a set of HandlerSet
 func ctxSetError(ctx context.Context, e error) context.Context {
-	return context.WithValue(ctx, knobErrorKey, e)
+	return context.WithValue(ctx, errorKey, e)
 }
 
 // CtxGetError gets the error for a set of HandlerSet
 func ctxGetError(ctx context.Context) (bool, error) {
-	b, ok := ctx.Value(knobErrorKey).(error)
+	b, ok := ctx.Value(errorKey).(error)
 	return ok, b
 }
 
