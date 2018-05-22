@@ -9,12 +9,16 @@ type ctxErrorKey int
 
 var errorKey ctxErrorKey
 
-// CtxSetError sets the error for a set of HandlerSet
+// ctxSetError sets the error for a HandlerSet. Contexts were chosen because using
+// them allowed me to preserve the http.Handler interface. Further, I chose to use
+// Context because it is defined as a way to "pass request-scoped values ... across
+// API boundaries to all the goroutines involved in handling a request" which
+// is exactly what this is doing.
 func ctxSetError(ctx context.Context, e error) context.Context {
 	return context.WithValue(ctx, errorKey, e)
 }
 
-// CtxGetError gets the error for a set of HandlerSet
+// ctxGetError gets the error for a set of HandlerSet
 func ctxGetError(ctx context.Context) (bool, error) {
 	b, ok := ctx.Value(errorKey).(error)
 	return ok, b
