@@ -53,7 +53,7 @@ func (h *HandlerSet) Prepend(handler http.Handler) {
 	h.handlers = append([]http.Handler{handler}, h.handlers...)
 }
 
-// ServeHTTP fullfills the http.Hander interface
+// ServeHTTP fullfills the http.Handler interface
 func (h HandlerSet) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	for _, handler := range h.handlers {
 		handler.ServeHTTP(w, r)
